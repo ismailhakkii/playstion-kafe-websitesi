@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Gamepad2, ChevronLeft, Star } from "lucide-react";
+import MouseTrail from "../components/MouseTrail";
 
 const games = [
   { title: "EA FC 25", category: "Spor", rating: "4.8", color: "from-blue-600 to-cyan-500" },
@@ -18,6 +19,7 @@ const games = [
 export default function GamesPage() {
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative overflow-hidden">
+      <MouseTrail />
       
       {/* BASİT ARKA PLAN EFEKTİ */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-cyber-primary/20 to-transparent pointer-events-none"></div>

@@ -3,10 +3,12 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, Float, Stars, Torus } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { Gamepad2, Clock, Utensils, Sparkles, Zap, Phone, Trophy } from "lucide-react";
+import { Gamepad2, Clock, Utensils, Sparkles, Zap, Phone, Trophy, Menu } from "lucide-react";
 import { useRef, useState, useMemo } from "react";
-import Link from "next/link"; // <-- YENİ EKLENDİ
+import Link from "next/link";
 import * as THREE from "three";
+import MobileMenu from "./components/MobileMenu";
+import MouseTrail from "./components/MouseTrail";
 
 // --- 3D BİLEŞENLER (AYNI) ---
 function Tunnel() {
@@ -56,6 +58,8 @@ function FloatingParticles() {
 
 export default function Home() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   const handleMouseMove = (e: React.MouseEvent) => {
     const x = (e.clientX - window.innerWidth / 2) / 50;
     const y = (e.clientY - window.innerHeight / 2) / 50;
@@ -65,6 +69,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-cyber-black text-white overflow-x-hidden relative" onMouseMove={handleMouseMove}>
+      <MouseTrail />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      
       <div className="fixed inset-0 z-0">
         <Canvas gl={{ antialias: false }}>
           <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -90,12 +97,24 @@ export default function Home() {
           <nav className="hidden md:flex gap-6 text-sm font-bold text-gray-300">
             <Link href="/games" className="hover:text-cyber-secondary transition-colors">OYUNLAR</Link>
             <Link href="/tournaments" className="hover:text-cyber-secondary transition-colors">TURNUVALAR</Link>
-            <Link href="/" className="hover:text-cyber-secondary transition-colors">FİYATLAR</Link>
+            <Link href="/pricing" className="hover:text-cyber-secondary transition-colors">FİYATLAR</Link>
+            <Link href="/gallery" className="hover:text-cyber-secondary transition-colors">GALERİ</Link>
+            <Link href="/leaderboard" className="hover:text-cyber-secondary transition-colors">LİDERLİK</Link>
+            <Link href="/contact" className="hover:text-cyber-secondary transition-colors">İLETİŞİM</Link>
           </nav>
 
-          <button className="bg-white text-black px-5 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform">
-            <Phone size={16}/> REZERVASYON
-          </button>
+          {/* DESKTOP BUTON & MOBİL HAMBURGER */}
+          <div className="flex items-center gap-3">
+            <button className="hidden md:flex bg-white text-black px-5 py-2 rounded-lg font-bold text-sm items-center gap-2 hover:scale-105 transition-transform">
+              <Phone size={16}/> REZERVASYON
+            </button>
+            <button 
+              onClick={() => setMobileMenuOpen(true)}
+              className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </header>
 
         {/* HERO İÇERİĞİ (Aynı) */}

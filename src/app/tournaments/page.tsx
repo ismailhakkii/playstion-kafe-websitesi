@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Trophy, ChevronLeft, Calendar, Users, Zap } from "lucide-react";
+import MouseTrail from "../components/MouseTrail";
 
 export default function TournamentsPage() {
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative">
+        <MouseTrail />
         
       <div className="max-w-5xl mx-auto relative z-10">
         <Link href="/" className="flex items-center gap-2 text-cyber-secondary hover:text-white transition-colors font-bold mb-12">
