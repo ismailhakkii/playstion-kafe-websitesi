@@ -9,6 +9,11 @@ import Link from "next/link";
 import * as THREE from "three";
 import MobileMenu from "./components/MobileMenu";
 import MouseTrail from "./components/MouseTrail";
+import LoadingScreen from "./components/LoadingScreen";
+import ScrollProgress from "./components/ScrollProgress";
+import StatsCounter from "./components/StatsCounter";
+import ConsoleStatus from "./components/ConsoleStatus";
+import Testimonials from "./components/Testimonials";
 
 // --- 3D BİLEŞENLER (AYNI) ---
 function Tunnel() {
@@ -69,6 +74,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-cyber-black text-white overflow-x-hidden relative" onMouseMove={handleMouseMove}>
+      <LoadingScreen />
+      <ScrollProgress />
       <MouseTrail />
       <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       
@@ -163,6 +170,11 @@ export default function Home() {
                 </div>
             ))}
         </div>
+
+        {/* YENİ BÖLÜMLER */}
+        <StatsCounter />
+        <ConsoleStatus />
+        <Testimonials />
       </div>
     </main>
   );

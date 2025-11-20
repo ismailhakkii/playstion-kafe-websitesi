@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css"; // <--- İŞTE SİHİRLİ SATIR BU! (Eksikti muhtemelen)
+import "./globals.css";
+import { ToastProvider } from "./components/ToastProvider";
 
 export const metadata: Metadata = {
   title: "CodeBros PlayStation",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="antialiased bg-cyber-black text-white">
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </body>
     </html>
   );

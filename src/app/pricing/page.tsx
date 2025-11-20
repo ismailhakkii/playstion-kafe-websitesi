@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronLeft, Clock, Zap, Crown, Users, Check, Gift, GraduationCap } from "lucide-react";
 import MouseTrail from "../components/MouseTrail";
+import ScrollProgress from "../components/ScrollProgress";
 
 const packages = [
   {
@@ -83,6 +84,7 @@ const discounts = [
 export default function PricingPage() {
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative overflow-hidden">
+      <ScrollProgress />
       <MouseTrail />
       
       {/* ARKA PLAN EFEKTİ */}

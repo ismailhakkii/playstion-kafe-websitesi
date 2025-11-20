@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Trophy, ChevronLeft, Calendar, Users, Zap } from "lucide-react";
 import MouseTrail from "../components/MouseTrail";
+import ScrollProgress from "../components/ScrollProgress";
 
 export default function TournamentsPage() {
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative">
+        <ScrollProgress />
         <MouseTrail />
         
       <div className="max-w-5xl mx-auto relative z-10">

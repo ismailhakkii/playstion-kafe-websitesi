@@ -5,8 +5,11 @@ import Link from "next/link";
 import { ChevronLeft, MapPin, Phone, Clock, Mail, Send, Instagram, Twitter } from "lucide-react";
 import { useState } from "react";
 import MouseTrail from "../components/MouseTrail";
+import { useToast } from "../components/ToastProvider";
+import ScrollProgress from "../components/ScrollProgress";
 
 export default function ContactPage() {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -19,11 +22,20 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form gönderme işlemi burada
-    alert("Rezervasyon talebiniz alındı! En kısa sürede size dönüş yapacağız.");
+    showToast("success", "Rezervasyon Alındı!", "En kısa sürede size dönüş yapacağız.");
+    setFormData({
+      name: "",
+      phone: "",
+      date: "",
+      time: "",
+      people: "1",
+      message: ""
+    });
   };
 
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative overflow-hidden">
+      <ScrollProgress />
       <MouseTrail />
       
       {/* ARKA PLAN EFEKTİ */}

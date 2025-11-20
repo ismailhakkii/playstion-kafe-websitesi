@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, Image as ImageIcon, Gamepad2, Users, Sparkles } from "lucide-react";
 import { useState } from "react";
 import MouseTrail from "../components/MouseTrail";
+import ScrollProgress from "../components/ScrollProgress";
 
 // PLACEHOLDER GALERI İÇERİĞİ (Gerçek fotoğraflar eklenebilir)
 const galleryItems = [
@@ -43,6 +44,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative overflow-hidden">
+      <ScrollProgress />
       <MouseTrail />
       
       {/* ARKA PLAN */}

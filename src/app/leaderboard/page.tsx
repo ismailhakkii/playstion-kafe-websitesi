@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, Trophy, Medal, Crown, Zap, Target } from "lucide-react";
 import { useState } from "react";
 import MouseTrail from "../components/MouseTrail";
+import ScrollProgress from "../components/ScrollProgress";
 
 // PLACEHOLDER VERİLER
 const leaderboardData = {
@@ -56,6 +57,7 @@ export default function LeaderboardPage() {
 
   return (
     <main className="min-h-screen bg-cyber-black text-white p-8 relative overflow-hidden">
+      <ScrollProgress />
       <MouseTrail />
       
       {/* ARKA PLAN */}
